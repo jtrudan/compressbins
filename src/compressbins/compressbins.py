@@ -4,7 +4,7 @@ def compress_bins(bins: list) -> list:
     :param bins: the bins you want to compress. Must be a list with at least 2 elements Ex) you might pass the bins returned by numpy.histogram()
     :return: List containing the stringified bins expressed as ranges.
     """
-    if (not isinstance(bins, list)) or (len(bins) < 2):
+    if (not hasattr(bins, '__iter__')) or (len(bins) < 2):
         raise ValueError("bins must be an array of length >= 2")
     string_bins = []
     for i in range(len(bins) - 1):
