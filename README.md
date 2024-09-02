@@ -10,15 +10,17 @@ compressed_bins = cb.compress_bins([0,2,4,6])
 print(compressed_bins) # ['0-2','2-4','4-6']
 ```
 
-We can then use these sbins in creating frequency charts:
+We can then use these compressed bins in creating frequency charts:
 ```
 import pandas as pd
 import numpy as np
 
 counts, bins = np.histogram(df, bins=np.arange(10.00, 20.00, 1.00))
 cbins = compress_bins(bins)
+
 freqChart = pd.DataFrame({"Cost":cbins, "Count":counts})
 print(freqChart)
+
         Cost  Count
 0  10.0-11.0      1
 1  11.0-12.0      8
